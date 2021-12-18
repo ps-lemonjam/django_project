@@ -21,6 +21,7 @@ def post_new(request):
             post.published_date = timezone.now() # 현재 시간을 넣어줌
             post.save() # 다 만들었으면 세이브 호출
             return redirect('blog:post_detail', pk=post.pk)
+            #return redirect('post_detail', pk=post.pk)
             #글을 추가하고 저장까지 끝났기에 디테일로 다시 연결, 지금 작성한 디테일 화면으로 넘어갈 수 있게 post.pk 연결
     else:
         form = PostForm() # 빈 폼을 출력
@@ -35,6 +36,7 @@ def post_edit(request, pk):
             post.author = request.user
             #post.published_date = timezone.now()
             post.save()
+            #return redirect('post_detail', pk=post.pk)
             return redirect('blog:post_detail', pk=post.pk)
     else:
         form = PostForm(instance=post)

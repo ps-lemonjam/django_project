@@ -6,6 +6,14 @@
 
 {% block content %}
 {{object.site_name}}<br/>
-{{object.url}}
+{{object.url}}<br/>
+    <tbody>
+        {% for bookmark in object_list %}
+            <tr>
+                <td><a href="{% url 'bookmark:update' pk=bookmark.id %}" class="btn btn-success btn-sm">Modify</a></td>
+                <td><a href="{% url 'bookmark:delete' pk=bookmark.id %}" class="btn btn-danger btn-sm">Delete</a></td>
+            </tr>
+        {% endfor %}
+    </tbody>
 {% endblock %}
 
